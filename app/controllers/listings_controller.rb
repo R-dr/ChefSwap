@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: %i[show edit update destroy]
 
   # GET /listings
   # GET /listings.json
@@ -9,22 +11,20 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   # GET /listings/1.json
-  def show
-  end
+  def show; end
 
   # GET /listings/new
   def new
-    @listing = Listing.new
+    @listing = current_user.listing.build
   end
 
   # GET /listings/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /listings
   # POST /listings.json
   def create
-    @listing = Listing.new(listing_params)
+    @listing = current_user.listing.build(listing_params)
 
     respond_to do |format|
       if @listing.save
@@ -62,13 +62,14 @@ class ListingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_listing
-      @listing = Listing.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def listing_params
-      params.require(:listing).permit(:title, :description, :job_type, :location, :user_id, :remote_ok)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_listing
+    @listing = Listing.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def listing_params
+    params.require(:listing).permit(:title, :description, :job_type, :location, :user_id, :remote_ok)
+  end
 end
