@@ -54,6 +54,4 @@ gem "sidekiq", "~> 6.1"
 
 gem "bulma-rails", "~> 0.9.0"
 
-gem "carrierwave", "~> 2.1"
 gem "trix", "~> 0.10.1"
-gem "mini_magick", "~> 4.11"
