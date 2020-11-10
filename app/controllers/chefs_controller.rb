@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ChefsController < ApplicationController
-  before_action :set_chef
+  before_action :set_chef, only: %i[show edit update destroy]
 
   
  
