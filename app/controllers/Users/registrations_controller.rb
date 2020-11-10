@@ -54,12 +54,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    if chef? # however you decide
-      new_chef_path  
+    if resource.chef? # however you decide
+      new_chefs_path  
     else
       root_path # or normal user path
     end
-  end
+    p resource
   end
 
   # The path used after sign up for inactive accounts.

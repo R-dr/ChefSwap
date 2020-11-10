@@ -55,3 +55,7 @@ gem 'stripe', '~> 5.28'
 gem 'sidekiq', '~> 6.1'
 
 gem 'trix', '~> 0.10.1'
+
+gem "cancancan", "~> 3.1"
+
+gem "rails_admin", "~> 2.0"

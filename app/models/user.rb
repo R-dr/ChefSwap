@@ -6,8 +6,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_one :listing, dependent: :destroy
-  has_one_attached :avatar
-  validates :email, length: { maximum: 40 }
-  validates :email, uniqueness: true
+has_one :listing, dependent: :destroy
+has_one_attached :avatar
+validates :email, length: { maximum: 40 }
+validates :email, uniqueness: true
 end

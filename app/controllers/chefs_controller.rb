@@ -1,23 +1,17 @@
 # frozen_string_literal: true
 
 class ChefsController < ApplicationController
-  before_action :set_chef, only: %i[show edit update destroy]
+  #before_action :set_chef, only: %i[show edit update destroy]
 
-  # GET /chefs
-  def index
-    @chefs = Chef.all
-  end
-
-  # GET /chefs/1
-  def show; end
+  
+ 
 
   # GET /chefs/new
   def new
     @chef = Chef.new
   end
 
-  # GET /chefs/1/edit
-  def edit; end
+
 
   # POST /chefs
   def create
@@ -54,6 +48,6 @@ class ChefsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def chef_params
-    params.require(:chef).permit(:user_id, :bio)
+    params.require(:chef).permit(:bio)
   end
 end
