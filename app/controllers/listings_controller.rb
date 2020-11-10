@@ -13,6 +13,11 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show; end
 
+  def home
+    @listings = Listing.all.length
+  
+  end
+
   # GET /listings/new
   def new
     @listing = Listing.new

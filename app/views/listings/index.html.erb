@@ -1,37 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listings</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Job type</th>
-      <th>Location</th>
-      <th>User</th>
-      <th>Remote ok</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.title %></td>
-        <td><%= listing.description %></td>
-        <td><%= listing.job_type %></td>
-        <td><%= listing.location %></td>
-        <td><%= listing.user_id %></td>
-        <td><%= listing.remote_ok %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
 <%= link_to 'New Listing', new_listing_path %>
+
+
+<h1 class='d-flex justify-content-center listings-header'>Chef listings</h1>
+
+
+<div class="container_2">
+  <% @listings.each do |listing| %>
+  
+
+      <div class="card  mb-3">
+        <div class="card-body">
+          <div class="listing-header mb-3">
+            <div class="avatar-container mr-3">
+                <div class="rounded-circle">
+                  <%= image_tag listing.user.avatar, class: "img-thumbnail h-250 w-50" %>
+                </div>
+              
+                
+            </div>
+            <div class="listing-user-info">
+              <h5 class="card-title text-dark mb-1 align-self-center"> 
+                  <%= listing.user.name %> 
+              </h5>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-5">
+              <%= listing.title %>
+              <%= listing.description %>
+                </div>
+                <div class="col text-right">
+                <% unless listing.booked? %>
+                <%= link_to 'Book This Chef!', booking_listing_path(listing.id,type: 'Book'), class: "btn btn-success", method: :put%>
+                 <% end %>
+                 <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
+                  <% if user_signed_in? && current_user.chef? && current_user.listings.include?(listing) %>
+                    <%= link_to "Delete", listing_path(listing.id), class: "btn btn-danger", method: :delete %>
+                    <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
+                  <% end %>
+              </div>
+            
+            </div>
+        </div>
+    </div>
+  <% end %>
+</div>
