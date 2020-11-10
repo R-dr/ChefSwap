@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Users::RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -12,13 +12,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # POST /resource
   def create
     super
-    current_user.avatar.attach(params[:user][:avatar])
+    resource.avatar.attach(params[:user][:avatar])
   end
 
   # GET /resource/edit
   def edit
     super
-    current_user.avatar.attach(params[:user][:avatar])
+    resource.avatar.attach(params[:user][:avatar])
   end
 
   # PUT /resource
@@ -54,13 +54,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
+   
     if resource.chef? # however you decide
-      new_chefs_path  
+      new_chef_path  
     else
       root_path # or normal user path
     end
     p resource
   end
+  
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

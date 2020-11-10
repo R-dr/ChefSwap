@@ -48,6 +48,6 @@ class ChefsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def chef_params
-    params.require(:chef).permit(:bio)
+    params.require(:chef).permit(:bio,:id)
   end
 end
