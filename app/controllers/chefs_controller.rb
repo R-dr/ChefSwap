@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ChefsController < ApplicationController
-  #before_action :set_chef, only: %i[show edit update destroy]
+  before_action :set_chef
 
   
  
@@ -11,7 +11,9 @@ class ChefsController < ApplicationController
     @chef = Chef.new
   end
 
-
+  def index
+    @chefs = Chef.all
+  end
 
   # POST /chefs
   def create
