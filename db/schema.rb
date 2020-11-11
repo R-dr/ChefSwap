@@ -89,8 +89,8 @@ ActiveRecord::Schema.define(version: 2020_11_11_082408) do
     t.integer "price"
     t.date "date_available"
     t.boolean "booked"
-    t.bigint "categories_id", null: false
-    t.index ["categories_id"], name: "index_listings_on_categories_id"
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_listings_on_category_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2020_11_11_082408) do
   add_foreign_key "comments", "users"
   add_foreign_key "listing_categories", "categories"
   add_foreign_key "listing_categories", "listings"
-  add_foreign_key "listings", "categories", column: "categories_id"
+  add_foreign_key "listings", "categories"
   add_foreign_key "listings", "users"
   add_foreign_key "recipes", "chefs"
   add_foreign_key "reviews", "bookings"

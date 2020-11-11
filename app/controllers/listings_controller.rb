@@ -26,9 +26,10 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-    byebug
+    pp params
     @listing = Listing.create(listing_params)
     @listing.user = current_user
+    #@listing.category_id = Category.find_by(id:params[:category_id])
 
     
       if @listing.save
@@ -70,6 +71,6 @@ class ListingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :location, :category)
+    params.require(:listing).permit(:title, :description, :location, :category_id)
   end
 end
