@@ -1,0 +1,22 @@
+<%= form_for([@recipe, @recipe.comments.build]) do |f| %>
+<% if @recipe.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(recipe.errors.count, "error") %> prohibited this comment from being saved:</h2>
+  <ul>
+    <% recipe.errors.full_messages.each do |message| %>
+    <li>
+      <%= message %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+<p>
+  <%= f.text_area :body %>
+</p>
+<br>
+<p>
+  <%= f.submit 'Submit ', class: 'btn btn-primary' %>
+</p>
+<% end %>

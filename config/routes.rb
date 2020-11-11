@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'recipes/index'
+  get 'recipes/show'
+  get 'recipes/edit'
+  get 'recipes/update'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :chefs
   resources :listings
@@ -13,5 +17,8 @@ Rails.application.routes.draw do
 
   resources :listings do
     put :booking, on: :member
+  end
+  resources :recipes do
+    resources :comments
   end
 end

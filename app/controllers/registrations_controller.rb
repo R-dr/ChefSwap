@@ -4,6 +4,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     super
     resource.avatar.attach(params[:user][:avatar])
+   
   end
   
   def edit

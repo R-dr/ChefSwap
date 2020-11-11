@@ -1,6 +1,9 @@
 <%= link_to 'New Listing', new_listing_path %>
-
-
+  <%= flash[:notice] %>
+  <% if current_user.chef? %>
+    <%= link_to 'New Listing', new_listing_path %>
+  <% end %>
+  
 <h1 class='d-flex justify-content-center listings-header'>Chef listings</h1>
 
 

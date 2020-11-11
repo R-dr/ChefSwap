@@ -1,0 +1,12 @@
+<div class="mb-5">
+  <h4 class="my-4 p-5 ">Recipe comments</h4>
+  <hr>
+
+  
+   <p>  There are  <%= @recipe.comments.count %> comments on this Recipe.</p>
+  <%= render @recipe.comments %>
+
+  <hr>
+  <p class="lead">leave a comment:</p>
+  <%= render 'comments/form' %>
+</div>

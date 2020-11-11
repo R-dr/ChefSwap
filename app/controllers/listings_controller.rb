@@ -3,6 +3,7 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
   before_action :authenticate_user!
+  before_action :authorize_listing, only: [:new, :create]
   # GET /listings
   # GET /listings.json
   def index
@@ -68,6 +69,11 @@ class ListingsController < ApplicationController
   end
 
   private
+  def authorize_listing
+    unless current_user.chef?
+      redirect_to listings_path, notice: 'you must be a chef to access this.'
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_listing
