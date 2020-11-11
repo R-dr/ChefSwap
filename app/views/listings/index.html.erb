@@ -1,10 +1,11 @@
-<%= link_to 'New Listing', new_listing_path %>
+
   <%= flash[:notice] %>
   <% if current_user.chef? %>
     <%= link_to 'New Listing', new_listing_path %>
   <% end %>
-  
-<h1 class='d-flex justify-content-center listings-header'>Chef listings</h1>
+
+
+<h1 class='d-flex justify-content-center'>Chef listings</h1>
 
 
 <div class="container_2">
@@ -13,13 +14,15 @@
 
       <div class="card  mb-3">
         <div class="card-body">
-          <div class="listing-header mb-3">
+          <div class=" card-header mb-3">
             <div class="avatar-container mr-3">
                 <div class="rounded-circle">
+                <% if listing.user.avatar.attached? %>
                   <%= image_tag listing.user.avatar, class: "img-thumbnail h-250 w-50" %>
+                  <% else %>
+                  <div class="rounded-circle placeholder"></div>
                 </div>
-              
-                
+                <% end %>
             </div>
             <div class="listing-user-info">
               <h5 class="card-title text-dark mb-1 align-self-center"> 

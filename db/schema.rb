@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_10_104313) do
+ActiveRecord::Schema.define(version: 2020_11_11_082408) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,6 +89,8 @@ ActiveRecord::Schema.define(version: 2020_11_10_104313) do
     t.integer "price"
     t.date "date_available"
     t.boolean "booked"
+    t.bigint "categories_id", null: false
+    t.index ["categories_id"], name: "index_listings_on_categories_id"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
@@ -134,6 +136,7 @@ ActiveRecord::Schema.define(version: 2020_11_10_104313) do
   add_foreign_key "comments", "users"
   add_foreign_key "listing_categories", "categories"
   add_foreign_key "listing_categories", "listings"
+  add_foreign_key "listings", "categories", column: "categories_id"
   add_foreign_key "listings", "users"
   add_foreign_key "recipes", "chefs"
   add_foreign_key "reviews", "bookings"

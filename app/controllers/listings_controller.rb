@@ -26,6 +26,7 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
+    byebug
     @listing = Listing.create(listing_params)
     @listing.user = current_user
 
@@ -37,6 +38,9 @@ class ListingsController < ApplicationController
       end
     
   end
+  def get_categories
+    @categories = Category.all
+   end
 
   # PATCH/PUT /listings/1
   def update
@@ -66,6 +70,6 @@ class ListingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :job_type, :location, :user_id, :remote_ok)
+    params.require(:listing).permit(:title, :description, :location, :category)
   end
 end

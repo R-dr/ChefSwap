@@ -6,6 +6,9 @@
   <div class="form-inputs">
     <%= f.input :title %>
     <%= f.input :description %>
+<%= f.label :category_id %>
+  <%= f.collection_select :category, @categories, :id, :name %>
+
     <%= f.input :location %>
     
   </div>
