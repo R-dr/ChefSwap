@@ -1,43 +1,41 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   def index
-    @recipes =Recipe.all
+    @recipes = Recipe.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new
-  end 
+  end
+
   def create
     @recipe = Recipe.create(recipe_params)
     @recipe.chef_id = current_user.id
-    byebug
-    
-      if @recipe.save
-        redirect_to @recipe, notice: 'recipe was successfully created.' 
-      else
-        render :new 
-      end
+
+    if @recipe.save
+      redirect_to @recipe, notice: 'recipe was successfully created.'
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /recipes/1
   # PATCH/PUT /recipes/1.json
   def update
-    
-      if @recipe.update(recipe_params)
-        redirect_to @recipe, notice: 'recipe was successfully updated.' 
-      else
-       render :edit 
-      end
+    if @recipe.update(recipe_params)
+      redirect_to @recipe, notice: 'recipe was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   # DELETE /recipes/1
   # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
-     redirect_to recipes_url, notice: 'recipe was successfully destroyed.'
+    redirect_to recipes_url, notice: 'recipe was successfully destroyed.'
   end
 
   private
