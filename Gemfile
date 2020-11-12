@@ -53,7 +53,6 @@ gem 'simple_form', '~> 5.0'
 gem 'stripe', '~> 5.28'
 
 
-gem 'trix', '~> 0.10.1'
 
 gem 'cancancan', '~> 3.1'
 
