@@ -1,33 +1,56 @@
-<h2>Sign up</h2>
+<div class="text-center">
+  <div class="form-group  align-items-center justify-content-center  w-30 p-4  bg-light ">
+  <div class="card rounded row m-4">
+          <h2>Sign up</h2>
+    <p> All these fields are required.</p>
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= f.error_notification %>
+            
+              <div class="form-group p-2">
+                <%= f.input :name, placeholder: "What's your name?", required: true ,input_html: { class: 'form-control' }%>
+              </div>
+            
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+            <div class="form-group">
+              <div class="col-xs-3">
+              <%= f.input :email, placeholder: "What's your email?",
+                          required: true,
+                          autofocus: true,
+                          input_html: { autocomplete: "email", class: 'form-control' }
+                          %>
+              </div>
+            </div>
+              
+              <div class="form-group">
+                <%= f.input :password,
+                          required: true,
+                          input_html: { autocomplete: "new-password" , class: 'form-control'}, placeholder: "Six char minimum." %>
+            </div>
+              
+              <div class="form-group">
+                <%= f.input :password_confirmation,
+                          required: true,
+                          input_html: { autocomplete: "new-password" , class: 'form-control'}, placeholder: "That same password please." %>
+            </div>
+              <div class="form-group">
+              <%= f.input :chef, inline_label: 'Sign up as a chef?',input_html: { class: 'form-control' } %>
+              <p> You cant change this later</p>
+            </div>
+              
+                <div class="form-group">
+                  <%= f.input :avatar, required: true ,input_html: { class: 'form-control' }, hint: "Got a pretty picture?"%>
+                </div>
+              
+          
 
-  
-  <%= f.input :name %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :chef, inline_label: 'Sign up as a chef' %>
-    
-            <%= f.label :avatar %><br/>
-            <%= f.file_field :avatar, accept: 'image/png, image/jpg, image/jpeg' %>
-        
- 
+            <div class="form-actions">
+              <%= f.button :submit, "Sign up", class:' btn btn-primary'%>
+            </div>
+          <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class:' btn btn-primary'%>
+          <%= render "devise/shared/links" %>
+
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
-
+</div>
 
