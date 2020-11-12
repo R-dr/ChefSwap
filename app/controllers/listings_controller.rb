@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
     pp params
     @listing = Listing.create(listing_params)
     @listing.user = current_user
-    #@listing.category_id = Category.find_by(id:params[:category_id])
+    ListingMailer.send_new_listing_email(current_user).deliver
 
     
       if @listing.save
