@@ -61,3 +61,5 @@ gem 'rails_admin', '~> 2.0'
 gem 'rubocop-rails', '~> 2.8'
 
 gem 'rubocop-rspec', '~> 2.0'
+
+gem "aws-sdk-s3", "~> 1.84"
