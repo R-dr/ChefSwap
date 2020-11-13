@@ -10,7 +10,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    if resource.chef?
+    if resource.is_chef?
       new_chef_path
     else
       root_path

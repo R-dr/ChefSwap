@@ -4,6 +4,7 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
+  <%= f.input :price, input_html: { class: "form-control center" } %>
     <%= f.input :title, input_html: { class: "form-control center" } %>
     <%= f.input :description, input_html: { class: "form-control center" } %>
     

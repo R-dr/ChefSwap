@@ -7,8 +7,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :comments, dependent: :destroy
-  has_many :listings, dependent: :destroy
+ 
+  has_many :recipes, through: :chefs
+  has_one :chef
+
   has_one_attached :avatar
+
   validates :email, length: { maximum: 40 }
   validates :email, uniqueness: true
+  validates :avatar, presence: true
 end

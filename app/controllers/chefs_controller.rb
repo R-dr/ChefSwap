@@ -2,7 +2,7 @@
 
 class ChefsController < ApplicationController
   before_action :set_chef, only: %i[show edit update destroy]
-
+  before_action :owner_chef?, only: %i[ edit update destroy]
   # GET /chefs/new
   def new
     @chef = Chef.new
@@ -39,6 +39,9 @@ class ChefsController < ApplicationController
   end
 
   private
+  def owner_chef?
+    Chef.find_by(user_id:current_user.id).id
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_chef

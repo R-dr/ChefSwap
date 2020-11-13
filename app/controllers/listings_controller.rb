@@ -26,9 +26,10 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-    pp params
+   
     @listing = Listing.create(listing_params)
-    @listing.user = current_user
+    @listing.chef= current_user.chef
+    
     ListingMailer.send_new_listing_email(current_user).deliver
 
     
@@ -55,13 +56,13 @@ class ListingsController < ApplicationController
   # DELETE /listings/1
   def destroy
     @listing.destroy
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+      redirect_to listings_url, notice: 'Listing was successfully destroyed.'
   end
 
   private
 
   def authorize_listing
-    redirect_to listings_path, notice: 'you must be a chef to access this.' unless current_user.chef?
+    redirect_to listings_path, notice: 'you must be a chef to access this.' unless current_user.is_chef?
   end
 
   # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +72,6 @@ class ListingsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :location, :category_id)
+    params.require(:listing).permit(:title, :description, :location, :category_id,:price)
   end
 end
