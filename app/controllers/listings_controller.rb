@@ -10,7 +10,9 @@ class ListingsController < ApplicationController
   end
 
   # GET /listings/1
-  def show; end
+  def show
+    @recipes = @listing.chef.recipes.all
+  end
 
   def home
     @listings = Listing.all.length

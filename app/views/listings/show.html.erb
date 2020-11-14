@@ -17,7 +17,18 @@
 </p>
 
 
-
-
-<%= link_to 'Edit', edit_listing_path(@listing) %> |
-<%= link_to 'Back', listings_path %>
+<% if current_user.is_chef? && current_user.chef.listings.include?(@listing) %>
+  
+<%= link_to 'Edit', edit_listing_path(@listing) %> 
+<% end %>
+<%= link_to 'Back', listings_path,class: "btn btn-info" %>
+</div>
+<div class="card" style="width: 18rem;">
+  <% @recipes.each do |rec| %>
+  
+    <%= image_tag(rec.image, class:'card-img-top') if rec.image.attached? %>
+    <h5 class="card-title">  <%= rec.title %></h5>
+   <p class="card-text"> <%= rec.body %></p>
+   <%= link_to 'show', rec ,class:'btn btn-primary'%>
+  <% end %>
+ </div>
