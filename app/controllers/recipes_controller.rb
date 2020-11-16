@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.create(recipe_params)
     @recipe.chef_id = Chef.find_by(user_id:current_user.id).id # searches chef table for a chef with the same user_id as the current user
     if @recipe.save
-      byebug
+     
       pp params
       redirect_to @recipe, notice: 'recipe was successfully created.'
     else
@@ -48,6 +48,6 @@ class RecipesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def recipe_params
-    params.require(:recipe).permit(:title, :cooktime, :body)
+    params.require(:recipe).permit(:title, :cooktime, :body, :image)
   end
 end
