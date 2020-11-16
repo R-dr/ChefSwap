@@ -13,7 +13,8 @@ button.addEventListener("click", (e) => {
     return res.json()
   })
   .then((data) => {
-    const stripe = Stripe("pk_test_TelMP0K5Dd2G07Yq7mrhal6W");
+    console.log(data)
+    const stripe = Stripe("pk_test_51Hfg1rHas6Qot51JpFFdnuIOKMlsooGJGwDocgBnsjwxS8A2zjUAMt3nu3cxj91lMgS9tDCSRaKRtPePKZS6TJVO00DspAPwqn");
     stripe.redirectToCheckout({
       sessionId: data.id
     })

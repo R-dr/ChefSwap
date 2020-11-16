@@ -6,11 +6,29 @@
   <% end %>
 
 
-<h1 class='d-flex justify-content-center'>Chef listings</h1>
+<div class="container d-flex">
 
 
-<div class="container_2">
+<h1 class='justify-content-center'>Chef listings</h1>
   <% @listings.each do |listing| %>
+
+
+  <div class="card" style="width: 30vh;">
+  <div class="card-body">
+    <h5 class="card-title"><%= listing.title %></h5>
+    <h6 class="card-subtitle mb-2 text-muted"><%=listing.category.name%></h6>
+    <h6 ></h6>
+    <p class="card-text"><%= listing.description %></p>
+     <div class="text-right">
+                 <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
+                  <% if user_signed_in? && current_user.is_chef? && current_user.chef.listings.include?(listing) %>
+                    <%= link_to "Delete", listing_path(listing.id), class: "btn btn-danger", method: :delete %>
+                    <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
+                  <% end %>
+              </div>
+            
+  </div>
+</div>
   
 
       <div class="card  mb-3">
@@ -24,24 +42,14 @@
           </div>
             <div class="row">
               <div class="col-5">
-              h3>
+              <h3>
              $<%= listing.price %>
              </h3>
-              <%= listing.title %>
-              <%= listing.description %>
+              
+              
               <%= listing.chef.bio %>
                 </div>
-                <div class="col text-right">
-                <% unless listing.booked? %>
-                <%= link_to 'Book This Chef!', booking_listing_path(listing.id,type: 'Book'), class: "btn btn-success", method: :put%>
-                 <% end %>
-                 <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
-                  <% if user_signed_in? && current_user.is_chef? && current_user.chef.listings.include?(listing) %>
-                    <%= link_to "Delete", listing_path(listing.id), class: "btn btn-danger", method: :delete %>
-                    <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
-                  <% end %>
-              </div>
-            
+               
             </div>
         </div>
     </div>

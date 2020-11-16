@@ -8,10 +8,10 @@ class PaymentsController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         price_data: {
-          unit_amount: listing.price,
+          unit_amount: 100,
           currency: 'aud',
           product_data: {
-            name: listing.name
+            name: listing.title
           },
         },
         quantity: 1,

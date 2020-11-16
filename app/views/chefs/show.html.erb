@@ -1,14 +1,17 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @chef.user.name %>
-</p>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @chef.bio %>
-</p>
-
-<%= link_to 'Edit', edit_chef_path(@chef) %> |
-<%= link_to 'Back', chefs_path %>
+ <div class="container ">
+  <h1 class="text-center">This is how people will see you in the listings.</h1>
+  <div class="card text-center d-flex  " style="width: 50vw;">
+  
+    <%= image_tag(@chef.user.avatar, class:'card-img-top') %>
+    <h5 class="card-title"> <strong>Name:</strong> <%= @chef.user.name %></h5>
+   <p class="card-text">  <%= @chef.bio %></p>
+   <%= link_to 'listings', listings_path ,class:'btn btn-primary d-block'%>
+  
+  <h3>Not quite right? change the bio <%= link_to 'Here', edit_chef_path(@chef) %> and the profile picture <%= link_to 'Here', edit_user_registration_path(@chef.user) %></h3>
+ 
+ 
+  </div>
+ </div>
