@@ -1,7 +1,8 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action  :authorize_chef
   def index
-    @recipes = Recipe.all
+    @recipes = current_user.chef.recipes.all
   end
 
   def show; end
@@ -14,8 +15,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.create(recipe_params)
     @recipe.chef_id = Chef.find_by(user_id:current_user.id).id # searches chef table for a chef with the same user_id as the current user
     if @recipe.save
-     
-      pp params
       redirect_to @recipe, notice: 'recipe was successfully created.'
     else
       render :new
@@ -23,7 +22,6 @@ class RecipesController < ApplicationController
   end
 
   # PATCH/PUT /recipes/1
-  # PATCH/PUT /recipes/1.json
   def update
     if @recipe.update(recipe_params)
       redirect_to @recipe, notice: 'recipe was successfully updated.'
@@ -33,14 +31,13 @@ class RecipesController < ApplicationController
   end
 
   # DELETE /recipes/1
-  # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
     redirect_to recipes_url, notice: 'recipe was successfully destroyed.'
   end
 
   private
-
+  
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])

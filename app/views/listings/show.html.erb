@@ -1,22 +1,27 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-
-<div class="card mb-3" style="width: 60vw;">
-  <%= image_tag(@listing.chef.user.avatar, class:'card-img-top') %>
-    <div class="card-body">
-      <h5 class="card-title"><%= @listing.title %></h5>
-      <p class="card-text">$<%= @listing.price %></p>
-      <p class="card-text"><%= @listing.description %></p>
-      <p class="card-text"><%= @listing.location %></p>
+  <div class="d-flex justify-content-center">
+    <div class="card mb-3" style="width: 40vw;">
+      <%= image_tag(@listing.chef.user.avatar, class:'card-img-top') %>
+        <div class="card-body">
+          <h5 class="card-title"><%= @listing.title %></h5>
+          <p class="card-text">$<%= @listing.price %></p>
+          <p class="card-text"><%= @listing.description %></p>
+          <p class="card-text"><%= @listing.location %></p>
+        </div>
+        <div class="card-body text-right">
+        <% unless @listing.booked? %>
+          <button class= 'btn btn-success'id="stripe">Book!</button>
+          <% else %>
+          <button type="button" class="btn btn-primary btn-sm disabled"> Unavailable</button>
+          <% end %>
+          <%= javascript_pack_tag 'stripe' %>
+        <% if current_user.is_chef && current_user.chef.listings.include?(@listing) %>
+          <%= link_to 'Edit', edit_listing_path(@listing),class:'btn btn-warning' %> 
+        <% end %>
+          <%= link_to 'Back', listings_path,class: "btn btn-info" %>
     </div>
-    <div class="card-body text-right">
-      <button class= 'btn btn-success'id="stripe">Book!</button>
-      <%= javascript_pack_tag 'stripe' %>
-    <% if current_user.is_chef && current_user.chef.listings.include?(@listing) %>
-      <%= link_to 'Edit', edit_listing_path(@listing),class:'btn btn-warning' %> 
-    <% end %>
-      <%= link_to 'Back', listings_path,class: "btn btn-info" %>
-</div>
+  </div>
 </div>
 
 

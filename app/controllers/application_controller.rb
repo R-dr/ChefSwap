@@ -7,7 +7,9 @@ class ApplicationController < ActionController::Base
   
   protected
 
-  
+  def authorize_chef
+    redirect_to listings_path, notice: 'you must be a chef to access this.' unless current_user.is_chef?
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[name is_chef avatar])

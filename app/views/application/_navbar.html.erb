@@ -13,6 +13,11 @@
        <li class="nav-item pr-4">
          <%= link_to 'View listings', listings_path, class: 'btn btn-outline-dark' %>
       </li>
+      <% if user_signed_in? && current_user.is_chef? %>
+      <li class="nav-item pr-4">
+         <%= link_to 'Recipes', recipes_path, class: 'btn btn-outline-dark' %>
+      </li>
+      <% end %>
       <% if user_signed_in? %>
       <li class="nav-item pr-4">
         <%= link_to 'Edit User profile', edit_user_registration_path, class: 'btn btn-outline-dark' %>
@@ -26,9 +31,5 @@
       <% end %>
       
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>

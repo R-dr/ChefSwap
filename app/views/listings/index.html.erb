@@ -2,7 +2,7 @@
  
   <%= flash[:notice] %>
   <% if current_user.is_chef? %>
-    <%= link_to 'New Listing', new_listing_path %>
+    <%= link_to 'New Listing', new_listing_path,class:'btn btn-dark' %>
   <% end %>
 
 
@@ -10,31 +10,28 @@
 <div class="container d-flex">
 
 
-  <% @listings.each do |listing| %>
-
-
+<% @listings.each do |listing| %>
   <div class="card p-4 m-2" style="width: 30vh;">
-  <div class="card-body">
+    <div class="card-body">
     <h5 class="card-title"><%= listing.title %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%=listing.category.name%></h6>
-              <h5 class="card-title text-dark mb-1 align-self-center"> 
-                  <%= listing.chef.user.name %> 
-              </h5>
-              <h3>
-             $<%= listing.price %>
-             </h3>
-    
-    <p class="card-text"><%= listing.description %></p>
-     <div class="text-right">
-                 <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
-                  <% if user_signed_in? && current_user.is_chef? && current_user.chef.listings.include?(listing) %>
-                    <%= link_to "Delete", listing_path(listing.id), class: "btn btn-danger", method: :delete %>
-                    <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
-                  <% end %>
-              </div>
+    <h5 class="card-title text-dark mb-1 align-self-center"> 
+      <%= listing.chef.user.name %> 
+    </h5>
+    <h3>
+      $<%= listing.price %>
+    </h3>
+      <p class="card-text"><%= listing.description %></p>
+    <div class="text-right">
+      <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
+    <% if user_signed_in? && current_user.is_chef? && current_user.chef.listings.include?(listing) %>
+      <%= link_to "Delete", listing_path(listing.id), class: "btn btn-danger", method: :delete %>
+      <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
+    <% end %>
+    </div>
   </div>
 </div>
-  
-            <% end %>
+
+<% end %>
 
      
