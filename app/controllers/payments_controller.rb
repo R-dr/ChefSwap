@@ -53,6 +53,7 @@ class PaymentsController < ApplicationController
     b.user = current_user
     b.save
     @listing.booked = true
+    @listing.save
   end
 
   def cancel 
