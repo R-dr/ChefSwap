@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ChefsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_chef, only: %i[show edit update destroy]
   before_action :owner_chef?, only: %i[ edit update destroy]
   before_action :authenticate_chef!
