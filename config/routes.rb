@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'bookings/index'
   get 'recipes/index'
   get 'recipes/show'
   get 'recipes/edit'
@@ -14,14 +15,12 @@ Rails.application.routes.draw do
   
   root to: 'listings#home'
   
-  resources :listings do
-    put :booking, on: :member
-  end
+  
   resources :recipes do
     resources :comments
   end
   resources :payments, only: [:create]
-  get'/payments/success',to:'payments#success'
+  get'/payments/success', to:'payments#success'
   get'/payments/cancel',to:'payments#cancel'
   post "/payments/webhook", to: "payments#webhook"
 end

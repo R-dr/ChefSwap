@@ -51,10 +51,13 @@ class ListingsController < ApplicationController
       if @listing.update(listing_params)
          redirect_to @listing, notice: 'Listing was successfully updated.'
       else
-        f render :edit
+         render :edit
       end
   end
-
+  
+def bookings
+  @bookings = current_user.bookings.all
+end
   # DELETE /listings/1
   def destroy
     @listing.destroy

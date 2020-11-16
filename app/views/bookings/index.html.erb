@@ -1,0 +1,10 @@
+test<div class="container">
+
+<div class="card mb-3" style="width: 60vw;">
+    <div class="card-body"> <% @booking.each do |booking| %>
+      <h5 class="card-title"><%= booking.listing.title %></h5>
+      <p class="card-text">$<%= booking.listing.price %></p>
+      <p class="card-text"><%= booking.listing.description %></p>
+      <p class="card-text"><%= booking.listing.location %></p>
+      <% end %>
+    </div>

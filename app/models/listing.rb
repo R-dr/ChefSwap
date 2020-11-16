@@ -5,7 +5,7 @@ class Listing < ApplicationRecord
   belongs_to :category
 
   has_one :booking
-  
+  has_one :user,through: :bookings
 
   validates :title, :description, :price, :category, presence: true
   validates :price, numericality: { only_decimal: true }

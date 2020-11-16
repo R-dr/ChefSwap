@@ -12,7 +12,7 @@
     <div class="card-body text-right">
       <button class= 'btn btn-success'id="stripe">Book!</button>
       <%= javascript_pack_tag 'stripe' %>
-    <% if current_user.chef.listings.include?(@listing) %>
+    <% if current_user.is_chef && current_user.chef.listings.include?(@listing) %>
       <%= link_to 'Edit', edit_listing_path(@listing),class:'btn btn-warning' %> 
     <% end %>
       <%= link_to 'Back', listings_path,class: "btn btn-info" %>

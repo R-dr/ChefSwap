@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :comments, dependent: :destroy
- 
+ has_many :bookings
   has_many :recipes, through: :chefs
   has_one :chef
 

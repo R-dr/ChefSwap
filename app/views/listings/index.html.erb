@@ -6,18 +6,24 @@
   <% end %>
 
 
+<h1 class='justify-content-center'>Chef listings</h1>
 <div class="container d-flex">
 
 
-<h1 class='justify-content-center'>Chef listings</h1>
   <% @listings.each do |listing| %>
 
 
-  <div class="card" style="width: 30vh;">
+  <div class="card p-4 m-2" style="width: 30vh;">
   <div class="card-body">
     <h5 class="card-title"><%= listing.title %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%=listing.category.name%></h6>
-    <h6 ></h6>
+              <h5 class="card-title text-dark mb-1 align-self-center"> 
+                  <%= listing.chef.user.name %> 
+              </h5>
+              <h3>
+             $<%= listing.price %>
+             </h3>
+    
     <p class="card-text"><%= listing.description %></p>
      <div class="text-right">
                  <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
@@ -26,32 +32,9 @@
                     <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-info"%>
                   <% end %>
               </div>
-            
   </div>
 </div>
   
+            <% end %>
 
-      <div class="card  mb-3">
-        <div class="card-body">
-          <div class=" card-header mb-3">
-            
-              <h5 class="card-title text-dark mb-1 align-self-center"> 
-                  <%= listing.chef.user.name %> 
-              </h5>
-            
-          </div>
-            <div class="row">
-              <div class="col-5">
-              <h3>
-             $<%= listing.price %>
-             </h3>
-              
-              
-              <%= listing.chef.bio %>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-  <% end %>
-</div>
+     

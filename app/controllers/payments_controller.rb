@@ -48,6 +48,11 @@ class PaymentsController < ApplicationController
   
   def success
     @listing = Listing.find(params[:listing_id])
+    b = Booking.new
+    b.listing = @listing
+    b.user = current_user
+    b.save
+    @listing.booked = true
   end
 
   def cancel 
