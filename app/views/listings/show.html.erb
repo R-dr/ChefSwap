@@ -26,14 +26,14 @@
 </div>
 
 
-
-<div class="card py-2"><%@reviews.each do |review| %>
-  <h3 class="card-title"><%=review.user.name %>  Said that this chef was:  <%= review.rating ? "#{'Good!'}" : "#{'Bad!'}" %></h3>
-  <p class="card-text"><%= review.content %></p>
-  <% end %>
-  <hr>
-</div>
-
+<% unless @reviews.is_empty? %>
+  <div class="card py-2"><%@reviews.each do |review| %>
+    <h3 class="card-title"><%=review.user.name %>  Said that this chef was:  <%= review.rating ? "#{'Good!'}" : "#{'Bad!'}" %></h3>
+    <p class="card-text"><%= review.content %></p>
+    <% end %>
+    <hr>
+  </div>
+<% end %>
 
 
 
