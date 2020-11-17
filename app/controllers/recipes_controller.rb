@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
+  before_action :authenticate_user!
   before_action :authorize_chef, except: :show
   def index
     @recipes = current_user.chef.recipes.all.includes([image_attachment: :blob])

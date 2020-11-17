@@ -5,10 +5,10 @@
       <%= image_tag(@listing.chef.user.avatar, class:'card-img-top') %>
         <div class="card-body">
           <h5 class="card-title"><%= @listing.title %></h5>
-          <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%@listing.date_available if @listing.date_available? %></p>
+          <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%=@listing.date_available  %></p>
           <p class="card-text">$<%= @listing.price %></p>
           <p class="card-text"><%= @listing.description %></p>
-          <p class="card-text"><%= @listing.location %></p>
+          <p class="card-text"> in <%= @listing.location %></p>
         </div>
         <div class="card-body text-right">
         <% unless @listing.booked? || @listing.date_available.past?%>
