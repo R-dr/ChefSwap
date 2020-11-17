@@ -26,7 +26,7 @@
 </div>
 
 
-<% unless @reviews.is_empty? %>
+<% unless @reviews.empty? %>
   <div class="card py-2"><%@reviews.each do |review| %>
     <h3 class="card-title"><%=review.user.name %>  Said that this chef was:  <%= review.rating ? "#{'Good!'}" : "#{'Bad!'}" %></h3>
     <p class="card-text"><%= review.content %></p>
@@ -38,16 +38,17 @@
 
 
   
-
-<div class="container d-flex">
-<div class="card" style="width: 18rem;">
-  <% @recipes.each do |rec| %>
- 
-    <%= image_tag(rec.image, class:'card-img-top') if rec.image.attached? %>
-    <h5 class="card-title">  <%= rec.title %></h5>
-   <p class="card-text"> <%= rec.body %></p>
-   <%= link_to 'show', rec ,class:'btn btn-primary'%>
-  <% end %>
- </div>
+<% unless @recipes.empty? %>
+  <div class="container d-flex">
+    <div class="card" style="width: 18rem;">
+      <% @recipes.each do |rec| %>
+      
+          <%= image_tag(rec.image, class:'card-img-top') if rec.image.attached? %>
+          <h5 class="card-title">  <%= rec.title %></h5>
+        <p class="card-text"> <%= rec.body %></p>
+        <%= link_to 'show', rec ,class:'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
 </div>
-</div>
+<% end %>
