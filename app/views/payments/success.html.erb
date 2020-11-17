@@ -1,3 +1,4 @@
 <h1>Sucessfully paid!</h1>
 
-<h2>You successfully paid <%= number_to_currency(@listing.price / 100.0) %> for <%= @listing.title %></h2>
+<h2>You successfully paid <%= number_to_currency(@listing.price * 100.0) %>  to <%= @listing.chef.user.name %>
+for <%= @listing.title %> on <%= @listing.date_available %></h2>
