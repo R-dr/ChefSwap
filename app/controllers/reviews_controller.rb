@@ -7,7 +7,6 @@ class ReviewsController < ApplicationController
   end
 
   def create
-   
     @review = @booking.build_review(review_params)
     @review.user_id = current_user.id
     @review.save
@@ -22,6 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating,:content, :booking)
+    params.require(:review).permit(:rating, :content, :booking)
   end
 end

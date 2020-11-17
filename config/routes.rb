@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'recipes/show'
   get 'recipes/edit'
   get 'recipes/update'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :recipies
   resources :chefs
   resources :listings
   devise_for :users, :controllers => {:registrations => "registrations"}

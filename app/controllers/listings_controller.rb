@@ -6,7 +6,7 @@ class ListingsController < ApplicationController
   before_action :authorize_chef, only: %i[new create]
   # GET /listings
   def index
-    @listings = Listing.all.includes([:category,:chef])
+    @listings = Listing.all.includes(%i[category chef])
   end
 
   # GET /listings/1
@@ -29,45 +29,42 @@ class ListingsController < ApplicationController
 
   # POST /listings
   def create
-   
     @listing = Listing.create(listing_params)
-    @listing.chef= current_user.chef
-    
+    @listing.chef = current_user.chef
+
     ListingMailer.send_new_listing_email(current_user).deliver
 
-    
-      if @listing.save
-         redirect_to @listing, notice: 'Listing was successfully created.'
-      else
-         render :new
-      end
-    
+    if @listing.save
+      redirect_to @listing, notice: 'Listing was successfully created.'
+    else
+      render :new
+    end
   end
+
   def get_categories
     @categories = Category.all
-   end
+  end
 
   # PATCH/PUT /listings/1
   def update
-      if @listing.update(listing_params)
-         redirect_to @listing, notice: 'Listing was successfully updated.'
-      else
-         render :edit
-      end
+    if @listing.update(listing_params)
+      redirect_to @listing, notice: 'Listing was successfully updated.'
+    else
+      render :edit
+    end
   end
-  
-def bookings
-  @bookings = current_user.bookings.all
-end
+
+  def bookings
+    @bookings = current_user.bookings.all
+  end
+
   # DELETE /listings/1
   def destroy
     @listing.destroy
-      redirect_to listings_url, notice: 'Listing was successfully destroyed.'
+    redirect_to listings_url, notice: 'Listing was successfully destroyed.'
   end
 
   private
-
- 
 
   # Use callbacks to share common setup or constraints between actions.
   def set_listing
@@ -76,6 +73,6 @@ end
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :location, :category_id,:price,:chef_id, :date_available)
+    params.require(:listing).permit(:title, :description, :location, :category_id, :price, :chef_id, :date_available)
   end
 end

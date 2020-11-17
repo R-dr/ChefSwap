@@ -6,7 +6,7 @@ class Recipe < ApplicationRecord
   has_one_attached :image
 
   validates :title, :body, :image, :cooktime, presence: true
-  validates :body , length: { in: 15..150 }
+  validates :body, length: { in: 15..150 }
   validates :title, length: { in: 5..45 }
   validates :title, length: { in: 0..300 }
 end

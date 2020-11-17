@@ -1,7 +1,5 @@
 class FutureValidator < ActiveModel::EachValidator
-  def validate_each(record, attribute, value)
-    if record[attribute] < Date.today
-      record.errors[attribute] << (options[:message] || "can't be in the past!")
-    end
+  def validate_each(record, attribute, _value)
+    record.errors[attribute] << (options[:message] || "can't be in the past!") if record[attribute] < Date.today
   end
 end

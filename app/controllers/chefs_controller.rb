@@ -3,7 +3,7 @@
 class ChefsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_chef, only: %i[show edit update destroy]
-  before_action :owner_chef?, only: %i[ edit update destroy]
+  before_action :owner_chef?, only: %i[edit update destroy]
   before_action :authenticate_chef!
   # GET /chefs/new
   def new
@@ -41,12 +41,15 @@ class ChefsController < ApplicationController
   end
 
   private
+
   def owner_chef?
-    Chef.find_by(user_id:current_user.id).id
+    Chef.find_by(user_id: current_user.id).id
   end
+
   def authenticate_chef!
     redirect_to listings_path, notice: 'you must be a chef to access this.' unless current_user.is_chef?
   end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_chef
     @chef = Chef.find(params[:id])

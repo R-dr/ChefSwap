@@ -1,13 +1,11 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
-  before_action  :authorize_chef, except: :show
+  before_action :authorize_chef, except: :show
   def index
     @recipes = current_user.chef.recipes.all.includes([image_attachment: :blob])
   end
 
-  def show
-  
-  end
+  def show; end
 
   def new
     @recipe = Recipe.new
@@ -15,7 +13,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    @recipe.chef_id = Chef.find_by(user_id:current_user.id).id # searches chef table for a chef with the same user_id as the current user
+    @recipe.chef_id = Chef.find_by(user_id: current_user.id).id # searches chef table for a chef with the same user_id as the current user
     if @recipe.save
       redirect_to @recipe, notice: 'recipe was successfully created.'
     else
@@ -39,7 +37,7 @@ class RecipesController < ApplicationController
   end
 
   private
-  
+
   # Use callbacks to share common setup or constraints between actions.
   def set_recipe
     @recipe = Recipe.find(params[:id])
