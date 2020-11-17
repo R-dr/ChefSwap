@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
   # GET /listings/1
   def show
     @recipes = @listing.chef.recipes.all.includes([image_attachment: :blob])
+    @reviews = @listing.chef.reviews.all.includes([:user])
   end
 
   def home

@@ -5,12 +5,13 @@
       <%= image_tag(@listing.chef.user.avatar, class:'card-img-top') %>
         <div class="card-body">
           <h5 class="card-title"><%= @listing.title %></h5>
+          <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%@listing.date_available if @listing.date_available? %></p>
           <p class="card-text">$<%= @listing.price %></p>
           <p class="card-text"><%= @listing.description %></p>
           <p class="card-text"><%= @listing.location %></p>
         </div>
         <div class="card-body text-right">
-        <% unless @listing.booked? %>
+        <% unless @listing.booked? || @listing.date_available.past?%>
           <button class= 'btn btn-success'id="stripe">Book!</button>
           <% else %>
           <button type="button" class="btn btn-primary btn-sm disabled"> Unavailable</button>
@@ -26,7 +27,12 @@
 
 
 
-
+<div class="card py-2"><%@reviews.each do |review| %>
+  <h3 class="card-title"><%=review.user.name %>  Said that this chef was:  <%= review.rating ? "#{'Good!'}" : "#{'Bad!'}" %></h3>
+  <p class="card-text"><%= review.content %></p>
+  <% end %>
+  <hr>
+</div>
 
 
 
