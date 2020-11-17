@@ -2,7 +2,7 @@
 
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[show edit update destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :home
   before_action :authorize_chef, only: %i[new create]
   # GET /listings
   def index
