@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
    
     @listing = Listing.create(listing_params)
     @listing.chef= current_user.chef
-    byebug
+    
     ListingMailer.send_new_listing_email(current_user).deliver
 
     
