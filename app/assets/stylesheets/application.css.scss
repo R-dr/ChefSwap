@@ -16,19 +16,5 @@
  *= require_self
  */
  @import 'bootstrap/dist/css/bootstrap';
-  .header {
-  display: flex;
-  align-items: center;
-  .avatar-container {
-    height: 80px;
-    .rounded-circle {
-      height: 100%;
-    }
-    .placeholder {
-      background: grey;
-      height: 80px;
-      width: 80px;
-      border-radius: 50%;
-    }
-  }
-}
+ .trix-button-group--file-tools { display: none !important; }
+  

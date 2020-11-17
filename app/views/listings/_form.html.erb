@@ -4,14 +4,16 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-  <%= f.input :price, input_html: { class: "form-control center" } %>
-    <%= f.input :title, input_html: { class: "form-control center" } %>
-    <%= f.input :description, input_html: { class: "form-control center" } %>
+        
+    <%= f.input :date_available, required: true , input_html: { class: "form-control center" } %>
+    <%= f.input :price, required: true , input_html: { class: "form-control center", max:4000, min:0 } %>
+    <%= f.input :title, required: true , input_html: { class: "form-control center" } %>
+    <%= f.input :description, required: true , input_html: { class: "form-control center" } %>
     
-    <%= f.association :category, prompt: "Select Category", input_html: { class: "form-control center" }%>
+    <%= f.association :category, required: true , prompt: "Select Category", input_html: { class: "form-control center" }%>
 
 
-    <%= f.input :location , input_html: { class: "form-control center" }%>
+    <%= f.input :location, required: true  , input_html: { class: "form-control center" }%>
     
     
   </div>

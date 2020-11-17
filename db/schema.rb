@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_14_104821) do
+ActiveRecord::Schema.define(version: 2020_11_17_042758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -88,7 +98,6 @@ ActiveRecord::Schema.define(version: 2020_11_14_104821) do
     t.bigint "chef_id", null: false
     t.string "title"
     t.integer "cooktime"
-    t.text "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["chef_id"], name: "index_recipes_on_chef_id"
@@ -99,7 +108,10 @@ ActiveRecord::Schema.define(version: 2020_11_14_104821) do
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "rating"
+    t.bigint "user_id", null: false
     t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,4 +140,5 @@ ActiveRecord::Schema.define(version: 2020_11_14_104821) do
   add_foreign_key "listings", "chefs"
   add_foreign_key "recipes", "chefs"
   add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users"
 end

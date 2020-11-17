@@ -1,4 +1,5 @@
-test<div class="container">
+
+<div class="container">
 
 <div class="card mb-3" style="width: 60vw;">
     <div class="card-body"> <% @booking.each do |booking| %>
@@ -6,5 +7,8 @@ test<div class="container">
       <p class="card-text">$<%= booking.listing.price %></p>
       <p class="card-text"><%= booking.listing.description %></p>
       <p class="card-text"><%= booking.listing.location %></p>
+      <%= link_to 'Booking', booking %>
       <% end %>
+      
+  
     </div>

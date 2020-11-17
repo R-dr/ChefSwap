@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :chef
 
   has_many :comments, dependent: :destroy
-
+  has_rich_text :body
   has_one_attached :image
 
   validates :title, :body, :image, :cooktime, presence: true

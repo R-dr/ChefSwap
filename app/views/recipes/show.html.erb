@@ -1,28 +1,21 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @recipe.title %>
-</p>
 
-<p>
-  <strong>Cook time:</strong>
-  <%= @recipe.cooktime%>
-</p>
+ 
+<div class="container d-flex justify-content-center pt-4">
+  <div class="card mt-3" style="width: 25rem;">
+    
 
-
-
-<p>
-  <strong>Method:</strong>
-  <%= @recipe.body %>
-</p>
-
+  <%= image_tag(@recipe.image, class:'card-img-top') if @recipe.image.attached? %>
+    <h5 class="card-title">  <%= @recipe.title %></h5>
+    <p class="card-text"> <%= @recipe.body %></p>
+  
+  </div>
+</div>
+<%= link_to 'Back', :back,class:'btn btn-secondary btn-sml' %>
 
 <%= render 'recipes/comments' %>
 
  <% if current_user.is_chef && current_user.chef.recipes.include?(@recipe) %>
       <%= link_to 'Edit', edit_recipe_path(@recipe),class:'btn btn-warning' %> 
     <% end %>
-<%= link_to 'Back', :back %>

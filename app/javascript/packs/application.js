@@ -15,3 +15,9 @@ require('bootstrap');
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+require("trix")
+require("@rails/actiontext")
+window.addEventListener("trix-file-accept", function(event) {
+  event.preventDefault()
+  alert("File attachment not supported!")
+})

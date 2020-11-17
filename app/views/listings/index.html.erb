@@ -2,16 +2,16 @@
  
   <%= flash[:notice] %>
   <% if current_user.is_chef? %>
-    <%= link_to 'New Listing', new_listing_path,class:'btn btn-dark' %>
+    <%= link_to 'New Listing', new_listing_path,class:'btn btn-dark d-block pb-3' %>
   <% end %>
 
 
-<h1 class='justify-content-center'>Chef listings</h1>
-<div class="container d-flex">
+<h1 class='text-center'>Chef listings</h1>
+<div class="container d-flex justify-content-center">
 
 
 <% @listings.each do |listing| %>
-  <div class="card p-4 m-2" style="width: 30vh;">
+  <div class="card mt-3" style="width: 25rem;">
     <div class="card-body">
     <h5 class="card-title"><%= listing.title %></h5>
     <h6 class="card-subtitle mb-2 text-muted"><%=listing.category.name%></h6>

@@ -6,12 +6,12 @@ class ListingsController < ApplicationController
   before_action :authorize_chef, only: %i[new create]
   # GET /listings
   def index
-    @listings = Listing.all
+    @listings = Listing.all.includes([:category,:chef])
   end
 
   # GET /listings/1
   def show
-    @recipes = @listing.chef.recipes.all
+    @recipes = @listing.chef.recipes.all.includes([image_attachment: :blob])
   end
 
   def home
@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
    
     @listing = Listing.create(listing_params)
     @listing.chef= current_user.chef
-    
+    byebug
     ListingMailer.send_new_listing_email(current_user).deliver
 
     
@@ -75,6 +75,6 @@ end
 
   # Only allow a list of trusted parameters through.
   def listing_params
-    params.require(:listing).permit(:title, :description, :location, :category_id,:price,:chef_id)
+    params.require(:listing).permit(:title, :description, :location, :category_id,:price,:chef_id, :date_available)
   end
 end

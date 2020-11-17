@@ -1,0 +1,25 @@
+<%= simple_form_for([@booking, @booking.build_review]) do |f| %>
+<% if @booking.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(booking.errors.count, "error") %> prohibited this review from being saved:</h2>
+  <ul>
+    <% booking.errors.full_messages.each do |message| %>
+    <li>
+      <%= message %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+  <p>
+  <%= f.input :rating,required: true, innput_html: {class:'form-control'} %>
+  </p>
+<p>
+  <%= f.input :content, required: true ,input_html: { class: 'form-control pb-6' }, placeholder:'Please leave a review' %>
+</p>
+<br>
+<p>
+  <%= f.submit 'Submit ', class: 'btn btn-primary' %>
+</p>
+<% end %>

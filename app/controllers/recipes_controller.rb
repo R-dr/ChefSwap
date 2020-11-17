@@ -2,10 +2,12 @@ class RecipesController < ApplicationController
   before_action :set_recipe, only: %i[show edit update destroy]
   before_action  :authorize_chef
   def index
-    @recipes = current_user.chef.recipes.all
+    @recipes = current_user.chef.recipes.all.includes([image_attachment: :blob])
   end
 
-  def show; end
+  def show
+  
+  end
 
   def new
     @recipe = Recipe.new
