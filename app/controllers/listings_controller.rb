@@ -6,14 +6,12 @@ class ListingsController < ApplicationController
   before_action :authorize_chef, only: %i[new create]
   # GET /listings
   def index
-    
     @listings = Listing.all.includes(%i[category chef])
   end
 
   # GET /listings/1
   def show
-    
-    @recipes = @listing.chef.recipes.all.includes([ image_attachment: :blob])
+    @recipes = @listing.chef.recipes.all.includes([image_attachment: :blob])
     @reviews = @listing.chef.reviews.all.includes([:user])
   end
 

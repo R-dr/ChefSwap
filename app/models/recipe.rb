@@ -8,5 +8,5 @@ class Recipe < ApplicationRecord
   validates :title, :body, :image, :cooktime, presence: true
   validates :body, length: { in: 15..1000 }
   validates :title, length: { in: 5..45 }
-  validates :cooktime, numericality: { only_integer: true, greater_than: -1, less_than: 400} 
+  validates :cooktime, numericality: { only_integer: true, greater_than: -1, less_than: 400 }
 end

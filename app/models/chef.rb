@@ -1,7 +1,7 @@
 class Chef < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
-  
+
   has_many :recipes, dependent: :destroy
   has_many :bookings
   has_many :listings, dependent: :destroy

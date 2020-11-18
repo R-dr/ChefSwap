@@ -40,9 +40,9 @@ group :development do
   gem 'listen', '~> 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'rails-erd'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rails-erd'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -62,5 +62,5 @@ gem 'aws-sdk-s3', '~> 1.84'
 
 gem 'bullet', '~> 6.1'
 
-gem "rails_admin", "~> 2.0"
-gem "cancan", "~> 1.6"
+gem 'cancan', '~> 1.6'
+gem 'rails_admin', '~> 2.0'

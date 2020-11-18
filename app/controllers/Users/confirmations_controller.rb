@@ -10,7 +10,7 @@ module Users
     # POST /resource/confirmation
     # def create
     #   super
-    #  
+    #
     # end
 
     # GET /resource/confirmation?confirmation_token=abcdef

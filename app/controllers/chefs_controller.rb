@@ -5,19 +5,17 @@ class ChefsController < ApplicationController
   before_action :set_chef, only: %i[show edit update destroy]
   before_action :owner_chef?, only: %i[edit update destroy]
   before_action :authenticate_chef!
-  skip_before_action :check_chef_attributes, only: [:new, :create]
+  skip_before_action :check_chef_attributes, only: %i[new create]
   # GET /chefs/new
   def new
     @chef = Chef.new
   end
 
-  
-
   # POST /chefs
   def create
     @chef = Chef.new(chef_params)
     @chef.user = current_user
-    
+
     if @chef.save
       redirect_to @chef, notice: 'Chef was successfully created.'
     else
