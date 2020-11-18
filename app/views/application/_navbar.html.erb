@@ -13,11 +13,16 @@
        <li class="nav-item pr-4">
          <%= link_to 'View listings', listings_path, class: 'btn btn-outline-dark' %>
       </li>
-      <% if user_signed_in? && current_user.is_chef? %>
+      <% if user_signed_in? && current_user.chef %>
       <li class="nav-item pr-4">
          <%= link_to 'Recipes', recipes_path, class: 'btn btn-outline-dark' %>
       </li>
+      <li class="nav-item pr-4">
+        <%= link_to 'Edit chef profile ', edit_chef_path(current_user.chef), class: 'btn btn-outline-dark' %>
+        </li>
       <% end %>
+      
+      
       <% if user_signed_in? %>
       <li class="nav-item pr-4">
         <%= link_to 'Edit User profile', edit_user_registration_path, class: 'btn btn-outline-dark' %>
@@ -32,7 +37,6 @@
       <li class="nav-item pr-4">
       <%= link_to 'Sign-in', new_user_session_path,class:"btn btn-outline-success" %>
       <% end %>
-      
-    </ul>
+     </ul>
   </div>
 </nav>

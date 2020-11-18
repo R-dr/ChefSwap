@@ -2,10 +2,7 @@
 
 Rails.application.routes.draw do
   get 'bookings/index'
-  get 'recipes/index'
-  get 'recipes/show'
-  get 'recipes/edit'
-  get 'recipes/update'
+ 
   resources :recipies
   resources :chefs, except: :index
   resources :listings

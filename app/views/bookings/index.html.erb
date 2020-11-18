@@ -5,11 +5,21 @@
     <div class="card-body"> <% @booking.each do |booking| %>
       <h5 class="card-title"><%= booking.listing.title %></h5>
       <p class="card-text">$<%= booking.listing.price %></p>
-      <p class="card-text"><%= booking.chef.user.name %> is cooking <%= booking.listing.category.name %> style food for you on, <%= booking.listing.date_available if booking.listing.date_available?  %></p>
-      <p class="card-text"><%= booking.listing.location %></p>
-      <% if booking.listing.date_available.past?%>
-        <%= link_to 'Review this booking', booking ,class:'btn btn-secondary'%>
+      <% if current_user.chef = booking.chef %>
+      <p class="card-text">youre cooking <%= booking.listing.category.name %> style food for<%= booking.user.name %>  on, <%= booking.listing.date_available %></p>
         <% else %>
+      <p class="card-text"><%= booking.chef.user.name %> is cooking <%= booking.listing.category.name %> style food for you on, <%= booking.listing.date_available %></p>
+      <% end %>
+      <p class="card-text"><%= booking.listing.location %></p>
+      <% if booking.review.present?%>
+        <%= link_to 'See this review', booking ,class:'btn btn-secondary'%>
+        <% elsif booking.listing.date_available.past? && booking.user = current_user %>
+        
+        <%= link_to 'Review this booking', booking ,class:'btn btn-secondary'%>
+        <% end %>
+        <% if booking.listing.date_available.future? && current_user.chef%>
+        <p class="card-text">Contact them at <%= booking.user.email %> to make sure everything is all good to go!</p>
+        <% elsif booking.listing.date_available.future? %>
         <p class="card-text">Contact them at <%= booking.chef.user.email %> to make sure everything is all good to go!</p>
       <% end %>
       <hr>

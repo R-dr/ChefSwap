@@ -4,8 +4,12 @@
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <h2 class="text-center">Tell us about yourself</h2>
     <div class="form-inputs">
-      
-      <%= f.input :bio , required: true ,input_html: { class: 'form-control pb-6' }, placeholder: "If people wanted food from a stranger they'd go to mcdonalds, put yourself out there." %>
+      <div class="form-group">
+        <%= f.input :avatar, required: false ,input_html: { class: 'form-control' }, hint: "Got a better picture?"%>
+      </div>
+      <div class="form-grop">
+        <%= f.input :bio , required: true ,input_html: { class: 'form-control pb-6' }, placeholder: "If people wanted food from a stranger they'd go to mcdonalds, put yourself out there." %>
+      </div>
     </div>
 
     <div class="form-actions pt-3 text-right">

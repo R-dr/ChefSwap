@@ -11,9 +11,9 @@ class User < ApplicationRecord
   has_many :recipes, through: :chefs
   has_one :chef, dependent: :destroy
 
-  has_one_attached :avatar
+  
 
   validates :email, length: { maximum: 40 }
   validates :email, uniqueness: true
-  validates :avatar, presence: true
+  
 end

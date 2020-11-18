@@ -5,19 +5,19 @@ class ChefsController < ApplicationController
   before_action :set_chef, only: %i[show edit update destroy]
   before_action :owner_chef?, only: %i[edit update destroy]
   before_action :authenticate_chef!
+  skip_before_action :check_chef_attributes, only: [:new, :create]
   # GET /chefs/new
   def new
     @chef = Chef.new
   end
 
-  # def index
-  #   @chefs = Chef.all
-  # end
+  
 
   # POST /chefs
   def create
     @chef = Chef.new(chef_params)
     @chef.user = current_user
+    
     if @chef.save
       redirect_to @chef, notice: 'Chef was successfully created.'
     else
@@ -57,6 +57,6 @@ class ChefsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def chef_params
-    params.require(:chef).permit(:bio, :id)
+    params.require(:chef).permit(:bio, :id, :avatar)
   end
 end

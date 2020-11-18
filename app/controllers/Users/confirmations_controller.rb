@@ -8,10 +8,10 @@ module Users
     # end
 
     # POST /resource/confirmation
-    def create
-      super
-      current_user.avatar.attach(params[:user][:avatar])
-    end
+    # def create
+    #   super
+    #  
+    # end
 
     # GET /resource/confirmation?confirmation_token=abcdef
     # def show

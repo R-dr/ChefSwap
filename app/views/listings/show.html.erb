@@ -2,7 +2,7 @@
 <div class="container">
   <div class="d-flex justify-content-center">
     <div class="card mb-3" style="width: 40vw;">
-      <%= image_tag(@listing.chef.user.avatar, class:'card-img-top') %>
+      <%= image_tag(@listing.chef.avatar, class:'card-img-top') %>
         <div class="card-body">
           <h5 class="card-title"><%= @listing.title %></h5>
           <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%=@listing.date_available  %></p>
@@ -14,7 +14,7 @@
         <% unless @listing.booked? || @listing.date_available.past? || @listing.chef = current_user.chef%>
           <button class= 'btn btn-success'id="stripe">Book!</button>
           <% else %>
-          <button type="button" class="btn btn-primary btn-sm disabled"> Unavailable</button>
+          <button type="button" class="btn btn-primary  disabled"> Unavailable</button>
           <% end %>
           <%= javascript_pack_tag 'stripe' %>
         <% if current_user.is_chef && current_user.chef.listings.include?(@listing) %>
