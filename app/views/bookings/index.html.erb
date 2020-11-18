@@ -5,8 +5,10 @@
     <div class="card-body"> <% @booking.each do |booking| %>
       <h5 class="card-title"><%= booking.listing.title %></h5>
       <p class="card-text">$<%= booking.listing.price %></p>
+      <% byebug %>
+
       <% if current_user.chef = booking.chef %>
-      <p class="card-text">youre cooking <%= booking.listing.category.name %> style food for<%= booking.user.name %>  on, <%= booking.listing.date_available %></p>
+      <p class="card-text">you're cooking <%= booking.listing.category.name %> style food for<%= booking.user.name %>  on, <%= booking.listing.date_available %></p>
         <% else %>
       <p class="card-text"><%= booking.chef.user.name %> is cooking <%= booking.listing.category.name %> style food for you on, <%= booking.listing.date_available %></p>
       <% end %>

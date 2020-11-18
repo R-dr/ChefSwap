@@ -5,5 +5,5 @@ module ListingsHelper
     Chef.find_by(user_id: listing.user.id).bio
   end
 
-  def get_chef_recipes(listing); end
+  
 end

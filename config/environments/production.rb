@@ -111,5 +111,13 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
-  config.action_mailer.default_url_options = { :host => 'https://chefswap.herokuapp.com/' }
+  ActionMailer::Base.smtp_settings = {
+    user_name: 'apikey',
+    password: 'Rails.application.credentials.dig(:sendgrid, :api_key)',
+    domain: 'https://chefswap.herokuapp.com/',
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end

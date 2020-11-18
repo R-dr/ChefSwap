@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   before_action :authorize_chef, only: %i[new create]
   # GET /listings
   def index
+    
     @listings = Listing.all.includes(%i[category chef])
   end
 

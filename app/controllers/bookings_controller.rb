@@ -3,7 +3,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: [:show]
   def index
     
-    if current_user.bookings.empty? && current_user.chef.bookings.empty?
+    if current_user.bookings.empty? ||(current_user.is_chef && current_user.chef.bookings.empty?)
       redirect_to listings_url, notice: 'You dont have any bookings yet! Check these out!'
     else
       if current_user.chef
