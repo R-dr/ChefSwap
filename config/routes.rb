@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'recipes/edit'
   get 'recipes/update'
   resources :recipies
-  resources :chefs
+  resources :chefs, except: :index
   resources :listings
   devise_for :users, :controllers => {:registrations => "registrations"}
   

@@ -5,7 +5,8 @@ class BookingsController < ApplicationController
     if current_user.bookings.empty?
       redirect_to listings_url, notice: 'You dont have any bookings yet! Check these out!'
     else
-      @booking = current_user.bookings.all.includes(%i[listing])
+      @booking = current_user.bookings.includes(%i[listing chef])
+      
       
     end
   end

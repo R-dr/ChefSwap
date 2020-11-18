@@ -10,9 +10,9 @@ class ChefsController < ApplicationController
     @chef = Chef.new
   end
 
-  def index
-    @chefs = Chef.all
-  end
+  # def index
+  #   @chefs = Chef.all
+  # end
 
   # POST /chefs
   def create

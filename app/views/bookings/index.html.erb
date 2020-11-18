@@ -1,19 +1,19 @@
 
 <div class="container">
 
-<div class="card mb-3" style="width: 60vw;">
+<div class="card pb-3 mt-3 border-black border-rounded" style="width: 60vw;">
     <div class="card-body"> <% @booking.each do |booking| %>
       <h5 class="card-title"><%= booking.listing.title %></h5>
       <p class="card-text">$<%= booking.listing.price %></p>
       <p class="card-text"><%= booking.chef.user.name %> is cooking <%= booking.listing.category.name %> style food for you on, <%= booking.listing.date_available if booking.listing.date_available?  %></p>
       <p class="card-text"><%= booking.listing.location %></p>
-      
       <% if booking.listing.date_available.past?%>
         <%= link_to 'Review this booking', booking ,class:'btn btn-secondary'%>
         <% else %>
         <p class="card-text">Contact them at <%= booking.chef.user.email %> to make sure everything is all good to go!</p>
       <% end %>
+      <hr>
       <% end %>
-      
-  
     </div>
+    </div>  
+  
