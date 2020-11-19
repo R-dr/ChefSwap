@@ -64,3 +64,4 @@ gem 'bullet', '~> 6.1'
 
 gem 'cancan', '~> 1.6'
 gem 'rails_admin', '~> 2.0'
+gem 'activestorage-validator'

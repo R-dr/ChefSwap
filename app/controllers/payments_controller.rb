@@ -48,7 +48,7 @@ class PaymentsController < ApplicationController
 
   def success
     @listing = Listing.find(params[:listing_id])
-    b = Booking.create(listing: @listing, user: current_user, chef: @listing.chef)
+    Booking.create(listing: @listing, user: current_user, chef: @listing.chef)
     @listing.booked = true
     @listing.save
   end

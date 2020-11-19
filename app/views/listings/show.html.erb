@@ -6,6 +6,7 @@
         <div class="card-body">
           <h5 class="card-title"><%= @listing.title %></h5>
           <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%=@listing.date_available  %></p>
+          <p class="card-text"><%= @listing.chef.bio %></p>
           <p class="card-text">$<%= @listing.price %></p>
           <p class="card-text"><%= @listing.description %></p>
           <p class="card-text"> in <%= @listing.location %></p>

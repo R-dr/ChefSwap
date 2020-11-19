@@ -5,10 +5,11 @@
     <div class="card-body"> <% @booking.each do |booking| %>
       <h5 class="card-title"><%= booking.listing.title %></h5>
       <p class="card-text">$<%= booking.listing.price %></p>
-      <% byebug %>
+      
+   
 
-      <% if current_user.chef = booking.chef %>
-      <p class="card-text">you're cooking <%= booking.listing.category.name %> style food for<%= booking.user.name %>  on, <%= booking.listing.date_available %></p>
+      <% if current_user.is_chef && (current_user.chef = booking.chef) %>
+      <p class="card-text">you're cooking <%= booking.listing.category.name %> style food for <%= booking.user.name %> on, <%= booking.listing.date_available %></p>
         <% else %>
       <p class="card-text"><%= booking.chef.user.name %> is cooking <%= booking.listing.category.name %> style food for you on, <%= booking.listing.date_available %></p>
       <% end %>
@@ -19,7 +20,7 @@
         
         <%= link_to 'Review this booking', booking ,class:'btn btn-secondary'%>
         <% end %>
-        <% if booking.listing.date_available.future? && current_user.chef%>
+        <% if booking.listing.date_available.future? && (current_user.is_chef && current_user.chef = booking.chef)%>
         <p class="card-text">Contact them at <%= booking.user.email %> to make sure everything is all good to go!</p>
         <% elsif booking.listing.date_available.future? %>
         <p class="card-text">Contact them at <%= booking.chef.user.email %> to make sure everything is all good to go!</p>

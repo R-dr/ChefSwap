@@ -13,5 +13,5 @@ Category.create(name:'Japanese')
 Category.create(name:'Greek')
 Category.create(name:'Fusion')
 Category.create(name:'American')
-User.create(email:'admin@admin.com',password:'123456',name:'admin_profile')
+User.create(email:'admin@admin.com',password:'123456',name:'admin_profile', admin: true)
 

@@ -31,7 +31,6 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.create(listing_params)
     @listing.chef = current_user.chef
-
     ListingMailer.send_new_listing_email(current_user).deliver
 
     if @listing.save

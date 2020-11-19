@@ -5,7 +5,7 @@
     <h2 class="text-center">Tell us about yourself</h2>
     <div class="form-inputs">
       <div class="form-group">
-        <%= f.input :avatar, required: false ,input_html: { class: 'form-control' }, hint: "Got a better picture?"%>
+        <%= f.input :avatar, required: true,input_html: { accept: 'image/png, image/jpg, image/jpeg', class: 'form-control' }, hint: "Got a better picture?"%>
       </div>
       <div class="form-grop">
         <%= f.input :bio , required: true ,input_html: { class: 'form-control pb-6' }, placeholder: "If people wanted food from a stranger they'd go to mcdonalds, put yourself out there." %>

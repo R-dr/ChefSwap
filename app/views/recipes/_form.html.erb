@@ -5,7 +5,7 @@
   <div class="form-inputs">
     <%= f.input :title, required: true ,input_html: { class: 'form-control' }, placeholder: "Got a fancy name with at least 5 chars?" %>
     <%= f.input :cooktime , label: ' Time to cook in minutes',required: true ,input_html: { class: 'form-control' },hint:' give us a rough numberhere. '%>
-    <%= f.input :image, required: true ,input_html: { class: 'form-control' },hint:'People eat with their eyes, give them a feast.' %>
+    <%= f.input :image, required: true ,input_html: { accept: 'image/png, image/jpg, image/jpeg', class: 'form-control' },hint:'People eat with their eyes, give them a feast.' %>
     <%= f.input :body, label: 'Method',  as: :rich_text_area,required: true ,input_html: { class: 'form-control' }, placeholder: "There has to be SOME method to the madness!",hint:' 15 char minimum ' %>
     
     

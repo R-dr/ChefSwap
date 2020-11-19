@@ -14,8 +14,9 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-    @recipe.chef_id = Chef.find_by(user_id: current_user.id).id # searches chef table for a chef with the same user_id as the current user
-    if @recipe.save
+   #  @recipe.chef_id = Chef.find_by(user_id: current_user.id).id # searches chef table for a chef with the same user_id as the current user
+   @recipe.chef = current_user.chef 
+   if @recipe.save
       redirect_to @recipe, notice: 'recipe was successfully created.'
     else
       render :new
