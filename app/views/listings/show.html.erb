@@ -12,7 +12,8 @@
           <p class="card-text"> in <%= @listing.location %></p>
         </div>
         <div class="card-body text-right">
-        <% unless @listing.booked? || @listing.date_available.past? || @listing.chef = current_user.chef%>
+        
+        <% unless @listing.booked? || @listing.date_available.past? ||current_user.is_chef%>
           <button class= 'btn btn-success'id="stripe">Book!</button>
           <% else %>
           <button type="button" class="btn btn-primary  disabled"> Unavailable</button>

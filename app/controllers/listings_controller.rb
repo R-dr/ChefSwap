@@ -11,11 +11,11 @@ class ListingsController < ApplicationController
 
   # GET /listings/1
   def show
-    @recipes = @listing.chef.recipes.all.includes([image_attachment: :blob])
+    @recipes = @listing.chef.recipes.all.includes([image_attachment: :blob]) # shows the chef who owns this listings reviews and recipes
     @reviews = @listing.chef.reviews.all.includes([:user])
   end
 
-  def home
+  def home #displays the total listings made on the site
     @listings = Listing.all.length
   end
 
@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
   def create
     @listing = Listing.create(listing_params)
     @listing.chef = current_user.chef
-    ListingMailer.send_new_listing_email(current_user).deliver
+    ListingMailer.send_new_listing_email(current_user).deliver #email service on new listing
 
     if @listing.save
       redirect_to @listing, notice: 'Listing was successfully created.'

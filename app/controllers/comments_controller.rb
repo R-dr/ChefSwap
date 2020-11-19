@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   end
 
   private
-
+ #determines the recipe to attach the coment to
   def find_recipe!
     @recipe = Recipe.find(params[:recipe_id])
   end

@@ -12,5 +12,5 @@ class User < ApplicationRecord
   has_one :chef, dependent: :destroy
 
   validates :email, length: { maximum: 40 }
-  validates :email, uniqueness: true
+  validates :email, uniqueness: true # a single email cant have multiple accounts
 end

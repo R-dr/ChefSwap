@@ -39,11 +39,11 @@ class ChefsController < ApplicationController
   end
 
   private
-
+ #determines if the chef that is signde in is the owner of the item
   def owner_chef?
     Chef.find_by(user_id: current_user.id).id
   end
-
+ ## determines if the current use is a chef to show them chef only pages
   def authenticate_chef!
     redirect_to listings_path, notice: 'you must be a chef to access this.' unless current_user.is_chef?
   end

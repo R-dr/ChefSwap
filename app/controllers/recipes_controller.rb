@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_chef, except: :show
   def index
-    @recipes = current_user.chef.recipes.all.includes([image_attachment: :blob])
+    @recipes = current_user.chef.recipes.all.includes([image_attachment: :blob]) # shows the current chef their recipes and allows them to edit or delete their recipes
   end
 
   def show; end
@@ -14,7 +14,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.create(recipe_params)
-   #  @recipe.chef_id = Chef.find_by(user_id: current_user.id).id # searches chef table for a chef with the same user_id as the current user
+  
    @recipe.chef = current_user.chef 
    if @recipe.save
       redirect_to @recipe, notice: 'recipe was successfully created.'

@@ -1,3 +1,5 @@
+
+#mailer service, from sendgrid
 class ListingMailer < ApplicationMailer
   default from: 'Rodney.ditch@hotmail.com'
 

@@ -62,6 +62,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ## bullet config for database optimization
   config.after_initialize do
     Bullet.enable = true
     Bullet.bullet_logger = true
