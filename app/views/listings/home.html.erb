@@ -1,9 +1,12 @@
 
-<div class="card allign-self-center justify-content-center">
-  <h1 class='card-title'>Welcome to ChefSwap</h1>
-  <div class="card-body">
-    <p class= 'card-text'>Connecting private chefs with amazing clients</p>
-    <h2 class ='card-text'>we currently have <%= @listings %> listings, care to add yours to the list?</h2>
-    <%= link_to 'Listings', listings_path, class: 'btn btn-primary d-block' %>
+
+
+  <div class="card allign-self-center justify-content-center">
+  <%= image_tag('melbourne.jpg', class:'card-img-top') %>
+    <h1 class='card-title'>Welcome to ChefSwap</h1>
+    <div class="card-body">
+      <p class= "card-text lead">Connecting private chefs with amazing clients</p>
+      <h2 class ="card-text lead">we currently have <%= @listings %> listings, care to add yours to the list?</h2>
+      <%= link_to 'Listings', listings_path, class: 'btn btn-primary d-block' %>
+    </div>
   </div>
-</div>

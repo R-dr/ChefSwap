@@ -9,7 +9,7 @@
 
   <%= image_tag(rec.image, class:'card-img-top') if rec.image.attached? %>
     <h5 class="card-title">  <%= rec.title %></h5>
-    <p class="card-text"> <%= rec.body %></p>
+    <p class="card-text lead"> <%= rec.body %></p>
   <%= link_to 'show', rec ,class:'btn btn-primary mb-4'%>
   <div class="bg-dark d-block"></div>
   <% end %>

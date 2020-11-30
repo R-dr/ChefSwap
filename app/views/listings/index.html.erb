@@ -6,15 +6,15 @@
   <% end %>
 
 
-<h1 class='text-center'>Chef listings</h1>
-<div class="container d-flex justify-content-center">
+<h1 class='text-center card-title'>Chef listings</h1>
+<div class="d-flex justify-content-center bg-light">
 
 
 <% @listings.each do |listing| %>
   <div class="card mt-3" style="width: 25rem;">
     <div class="card-body">
     <h5 class="card-title"><%= listing.title %></h5>
-    <h5 class="card-text">On: <%= listing.date_available %></h5>
+    <h5 class="card-text lead">On: <%= listing.date_available %></h5>
 
     <h6 class="card-subtitle mb-2 text-muted"><%=listing.category.name%></h6>
     <h5 class="card-title text-dark mb-1 align-self-center"> 
@@ -23,7 +23,7 @@
     <h3>
       $<%= listing.price %>
     </h3>
-      <p class="card-text"><%= listing.description %></p>
+      <p class="card-text lead"><%= listing.description %></p>
     <div class="text-right">
       <%= link_to "Show", listing_path(listing.id), class: "btn btn-primary" %>
     <% if user_signed_in? && current_user.is_chef? && current_user.chef.listings.include?(listing) %>

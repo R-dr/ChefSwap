@@ -8,8 +8,8 @@
 
   <%= image_tag(@recipe.image, class:'card-img-top')  %>
     <h5 class="card-title">  <%= @recipe.title %></h5>
-    <p class="card-text"> This takes <%= @recipe.cooktime %> minutes to cook</p>
-      <p class="card-text"> <%= @recipe.body %></p>
+    <p class="card-text lead"> This takes <%= @recipe.cooktime %> minutes to cook</p>
+      <p class="card-text lead"> <%= @recipe.body %></p>
   </div>
 </div>
 <%= link_to 'Back', :back,class:'btn btn-secondary btn-sml' %>

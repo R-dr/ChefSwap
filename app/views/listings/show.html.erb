@@ -5,11 +5,11 @@
       <%= image_tag(@listing.chef.avatar, class:'card-img-top') %>
         <div class="card-body">
           <h5 class="card-title"><%= @listing.title %></h5>
-          <p class="card-text"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%=@listing.date_available  %></p>
-          <p class="card-text"><%= @listing.chef.bio %></p>
-          <p class="card-text">$<%= @listing.price %></p>
-          <p class="card-text"><%= @listing.description %></p>
-          <p class="card-text"> in <%= @listing.location %></p>
+          <p class="card-text lead"><%=@listing.chef.user.name %> is cooking <%=@listing.category.name %> style food on <%=@listing.date_available  %></p>
+          <p class="card-text lead"><%= @listing.chef.bio %></p>
+          <p class="card-text lead">$<%= @listing.price %></p>
+          <p class="card-text lead"><%= @listing.description %></p>
+          <p class="card-text lead"> in <%= @listing.location %></p>
         </div>
         <div class="card-body text-right">
         
@@ -26,12 +26,12 @@
     </div>
   </div>
 </div>
-
+</div>
 
 <% unless @reviews.empty? %>
   <div class="card py-2"><%@reviews.each do |review| %>
     <h3 class="card-title"><%=review.user.name %>  Said that this chef was:  <%= review.rating ? "#{'Good!'}" : "#{'Bad!'}" %></h3>
-    <p class="card-text"><%= review.content %></p>
+    <p class="card-text lead"><%= review.content %></p>
     <% end %>
     <hr>
   </div>
@@ -41,16 +41,20 @@
 
   
 <% unless @recipes.empty? %>
-  <div class="container d-flex">
-    <div class="card" style="width: 18rem;">
+
+<div class=" d-flex flex-wrap">
+  
       <% @recipes.each do |rec| %>
       
+        <div class="card m-3" style="width: 18rem;">
           <%= image_tag(rec.image, class:'card-img-top') if rec.image.attached? %>
           <h5 class="card-title">  <%= rec.title %></h5>
-        <p class="card-text"> <%= rec.body %></p>
+        <p class="card-text lead"> <%= rec.body %></p>
         <%= link_to 'show', rec ,class:'btn btn-primary'%>
-        <% end %>
       </div>
+        <% end %>
     </div>
 </div>
+
+
 <% end %>

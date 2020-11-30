@@ -17,5 +17,21 @@
  */
  @import 'bootstrap/dist/css/bootstrap';
  .trix-button-group--file-tools { display: none !important; }
-
+ .bg-site{
+   background-color: rgb(240, 209, 192);
+ }
+.card-title{
+  font-family:'Abril Fatface',serif;
+  color:#10b0d8;
+}
+.card{
+  border:1px solid black;
+  
+}
+.card-text{
+  font-family:'Work sans',serif;
+}
+.btn-dark{
+  color:#9b8009ca
+}
   
